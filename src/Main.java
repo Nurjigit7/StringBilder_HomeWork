@@ -13,8 +13,8 @@ public class Main {
     public static String writeToFile(String fileName) throws IOException {
         String[] alphabet = {"Aa", "Bb", "Cc", "Dd", "Ee", "Ff", "Gg", "Hh", "Ii", "Jj", "Kk", "Ll", "Mm", "Nn", "Oo", "Pp", "Qq", "Rr", "Ss", "Tt", "Uu", "Vv", "Ww", "Xx", "Yy", "Zz", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         FileWriter fileWriter = new FileWriter(fileName);
-        for (int i = 0; i < alphabet.length; i++) {
-            fileWriter.write(i + 1 + ": " + alphabet[i] + "\n");
+        for (String word:alphabet) {
+            fileWriter.write(word + "\n");
         }
 
         fileWriter.close();
@@ -25,9 +25,10 @@ public class Main {
         try {
             FileReader fileReader = new FileReader(fileName);
             Scanner scanner = new Scanner(fileReader);
-
+            int i = 1;
             while (scanner.hasNext()) {
-                System.out.println(scanner.nextLine());
+                System.out.println(i + ": " + scanner.nextLine());
+                i++;
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
